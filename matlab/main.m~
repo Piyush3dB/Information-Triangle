@@ -1,0 +1,65 @@
+close all;
+clc;
+format compact;
+clear;
+
+dbstop if error
+
+here = pwd;
+
+plotter  = fullfile(here, 'ternplot');
+
+
+
+addpath(plotter);
+
+
+
+inCsv = 1;
+
+
+
+a = double([
+0.95 0.06 0.04 0.00 0.00
+0.38 0.24 0.30 0.00 0.00
+0.03 0.09 0.45 0.02 0.02
+0.03 0.00 1.47 0.76 0.16
+0.00 0.00 0.03 0.05 0.57
+    ]);
+
+b = int32([
+
+0.94 0.05 0.04 0.00 0.00
+0.47 0.28 0.40 0.01 0.01
+0.08 0.28 0.40 0.01 0.01
+0.08 0.08 0.40 0.03 0.02
+0.02 0.00 1.22 0.68 0.29
+0.04 0.01 0.15 0.17 0.44
+
+
+]);
+
+%
+tr = InfoTriangle(a);
+
+vd = InfoTriangle(b);
+
+
+dataA = tr.DeltaH_Pxy;
+dataB = tr.twoMI;
+dataC = tr.VI;
+ternplot(dataA, dataB, dataC, 'r*');
+hold on;
+
+dataA = vd.DeltaH_Pxy;
+dataB = vd.twoMI;
+dataC = vd.VI;
+
+ternplot(dataB, dataA, dataC, 'r*');
+
+%ternlabel('A', 'B', 'C')
+legend('Data', 'Fit')
+
+
+disp '== DONE ==';
+

@@ -1,4 +1,4 @@
-classdef infoTriangle
+classdef InfoTriangle
     properties
         C;
         m;
@@ -42,7 +42,7 @@ classdef infoTriangle
     
     methods
         
-        function obj = ConfusionMatrix(C)
+        function obj = InfoTriangle(C)
             
             % Save copy of matrix
             obj.C = C;
